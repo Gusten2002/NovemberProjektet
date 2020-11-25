@@ -9,9 +9,9 @@ namespace NovemberProjekt
     {
         static void Main(string[] args)
         {
-             Food flod = new Food();
+            // Food flod = new Food();
             Console.WriteLine("Hello chef!");
-            flod.Burnt();
+            // flod.Burnt();
             Console.ReadLine();
         }
     }
