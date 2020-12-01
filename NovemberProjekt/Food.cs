@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace NovemberProjekt
@@ -9,15 +10,13 @@ namespace NovemberProjekt
         {"tomato", "potato", "carrot", "garlic", "avocado", "lemon", "mango",
         "olives", "Turkey", "Fish", "beef", "chicken", "egg"};
 
-        public List<string> ingredients = new List<string>();
+        public List<string> insoup = new List<string>();
 
         private static Random generator = new Random();
 
         private bool isPoisonous = false;
 
         private bool ismoldy = false;
-
-        private int amount = generator.Next(1,11);
 
         public int filling = generator.Next(1,11);
 
@@ -37,7 +36,7 @@ namespace NovemberProjekt
         {
             if(chance >= 75)
             {
-                Console.WriteLine("HH");
+                Console.WriteLine("You burnt your food :C");
                 return true;
             }
 
@@ -50,16 +49,63 @@ namespace NovemberProjekt
 
         public void PickIngredients()
         {
-            Console.WriteLine("You have " + ingredientsAvailable + " avalible.");
-            //choice;
+            while (ingredientsAvailable.Count >= 1)
+            {
+                Console.WriteLine("In your soup: " + insoup);
+                Console.WriteLine("Would you like to add more?");
+
+                string[] WantMore = {"yes", "no"};
+
+                string input = Console.ReadLine().ToLower();
+
+                while (!WantMore.Contains(input))
+                {
+                    Console.WriteLine("Not a valid choice, try again");
+                    Console.WriteLine("Only accepting " + WantMore + " as answers.");
+
+                    input = Console.ReadLine();
+                }
+
+                if(input == "yes")
+                {
+                    Console.WriteLine("You have " + ingredientsAvailable + " avalible." +
+                    "What do you want to use for your soup?");
+
+                    choice = CheckAnswer();
+
+                    insoup.Add(choice);
+
+                    CheckIngredient();
+                }
+
+                else
+                {
+                    Soup();
+                }
+
+            }
+
+            Console.WriteLine("You have " + ingredientsAvailable + " avalible." +
+            "What do you want to use for your soup?");
+
+            choice = CheckAnswer();
+
+            insoup.Add(choice);
+
+            CheckIngredient();
         }
 
-        private void CheckIngredients()
+        private void CheckIngredient()
         {
-            
+            Poisonous();
+
+            if (Poisonous() == true)
+            {
+                Console.WriteLine("This food item is poisinous, but you realiced it after using it...");
+            }
         }
 
-        public bool Poisonous()
+        private bool Poisonous()
         {
             if(isPoisonous == false && ismoldy == false)
             {
@@ -94,5 +140,30 @@ namespace NovemberProjekt
 
             else return true;
         }
+
+        public void Soup()
+        {
+            Console.WriteLine("You cook your soup now.");
+            Burnt();
+        }
+
+        static string CheckAnswer()
+        {
+            string[] ans = {"tomato", "potato", "carrot", "garlic", "avocado","lemon",
+            "mango", "olives", "Turkey", "Fish", "beef", "chicken", "egg"};
+
+            string input = Console.ReadLine().ToLower();
+
+            while (!ans.Contains(input))
+            {
+                Console.WriteLine("Not a valid choice, try again");
+                Console.WriteLine("Only accepting " + ans + " as an answer.");
+
+                input = Console.ReadLine();
+            }
+
+            return input;
+        }
+
     }
 }

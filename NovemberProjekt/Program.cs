@@ -11,7 +11,6 @@ namespace NovemberProjekt
         {
             // Food flod = new Food();
             Console.WriteLine("Hello chef!");
-            // flod.Burnt();
             Console.ReadLine();
         }
     }
