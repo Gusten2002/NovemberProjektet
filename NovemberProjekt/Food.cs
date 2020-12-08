@@ -8,7 +8,7 @@ namespace NovemberProjekt
     {
         private List<string> ingredientsAvailable = new List<string>()
         {"tomato", "potato", "carrot", "garlic", "avocado", "lemon", "mango",
-        "olives", "Turkey", "Fish", "beef", "chicken", "egg"};
+        "olives", "turkey", "fish", "beef", "chicken", "egg"};
 
         private List<string> insoup = new List<string>();
 
@@ -28,10 +28,6 @@ namespace NovemberProjekt
 
         public bool foodpoisoned;
         
-        private int burntChance = generator.Next(100);
-
-        private int poisonChance = generator.Next(100);
-        
         public string name = "";
 
         private string choice = Console.ReadLine().ToLower();
@@ -40,7 +36,7 @@ namespace NovemberProjekt
 
         private bool Burnt()
         {
-            if(burntChance >= 75)
+            if(generator.Next(100) >= 75)
             {
                 Console.WriteLine("You didn't take the soup of the stove in time, there for it got burnt.");
                 return true;
@@ -57,7 +53,7 @@ namespace NovemberProjekt
         {
             while (ingredientsAvailable.Count >= 1 && input != "no")
             {
-                Console.WriteLine("In your soup: " + insoup);
+                Console.WriteLine("In your soup: " + String.Join(", ", insoup));
                 Console.WriteLine("Would you like to add more?");
 
                 string[] WantMore = {"yes", "no"};
@@ -67,14 +63,14 @@ namespace NovemberProjekt
                 while (!WantMore.Contains(input))
                 {
                     Console.WriteLine("Not a valid choice, try again");
-                    Console.WriteLine("Only accepting " + WantMore + " as answers.");
+                    Console.WriteLine("Only accepting " + String.Join(", ",WantMore) + " as answers.");
 
                     input = Console.ReadLine();
                 }
 
                 if(input == "yes")
                 {
-                    Console.WriteLine("You have " + ingredientsAvailable + " avalible." +
+                    Console.WriteLine("You have " + String.Join(", ", ingredientsAvailable) + " avalible." +
                     "What do you want to use for your soup?");
 
                     choice = CheckAnswer();
@@ -90,31 +86,62 @@ namespace NovemberProjekt
                 }
 
             }
-
-            Console.WriteLine("You have " + ingredientsAvailable + " avalible." +
-            "What do you want to use for your soup?");
-
-            choice = CheckAnswer();
-
-            insoup.Add(choice);
-
-            CheckIngredient();
         }
 
         private void CheckIngredient()
         {
-            Poisonous();
+            FoodPoisonous();
 
-            if (Poisonous() == true)
+            if (FoodPoisonous() == true)
             {
                 Console.WriteLine("This food item is poisinous, but you realiced it after using it...");
 
                 poisoned.Add(choice);
             }
+
+            else
+            {
+                Console.WriteLine("This food item is not poisinous.");
+            }
+        }
+
+        private bool Moldy()
+        {
+            if(generator.Next(10) >= 5)
+            {
+                ismoldy = true;
+                return true;
+            }
+
+            else
+            {
+                ismoldy = false;
+                return false;
+            }
         }
 
         private bool Poisonous()
         {
+            if(generator.Next(10) >= 5)
+            {
+                isPoisonous = true;
+                return true;
+            }
+
+            else
+            {
+                isPoisonous = false;
+                return false;
+            }
+        }
+
+        private bool FoodPoisonous()
+        {
+            Moldy();
+            Poisonous();
+            
+            int poisonChance = generator.Next(100);
+
             if(isPoisonous == false && ismoldy == false)
             {
                 return false;
@@ -152,10 +179,9 @@ namespace NovemberProjekt
 
         private void Soup()
         {
-            Console.WriteLine("You cook your soup now.");
+            Console.WriteLine("You cook your soup.");
             Burnt();
             PrintStats();
-
         }
 
         public void PrintStats()
@@ -185,7 +211,7 @@ namespace NovemberProjekt
                 foodpoisoned = true;
 
                 Console.WriteLine("Your soup is good, " +
-                "due to the amount of ingredients that was poisoned.");
+                "it is not poisoned.");
 
                 Console.WriteLine("You did managed to burn the soup tho.");
             }
@@ -193,23 +219,23 @@ namespace NovemberProjekt
             else
             {
                 Console.WriteLine("Your soup is good, " +
-                "due to the amount of ingredients that was poisoned.");
+                "it is not poisoned.");
 
-                Console.WriteLine("You also managed not to burn the soup.");
+                Console.WriteLine("You managed not to burn the soup.");
             }
         }
 
         static string CheckAnswer()
         {
             string[] ans = {"tomato", "potato", "carrot", "garlic", "avocado","lemon",
-            "mango", "olives", "Turkey", "Fish", "beef", "chicken", "egg"};
+            "mango", "olives", "turkey", "fish", "beef", "chicken", "egg"};
 
             string input = Console.ReadLine().ToLower();
 
             while (!ans.Contains(input))
             {
                 Console.WriteLine("Not a valid choice, try again");
-                Console.WriteLine("Only accepting " + ans + " as an answer.");
+                Console.WriteLine("Only accepting " + String.Join(", ", ans) + " as an answer.");
 
                 input = Console.ReadLine();
             }
