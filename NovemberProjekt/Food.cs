@@ -27,12 +27,10 @@ namespace NovemberProjekt
         // private int taste = generator.Next(1,6);
 
         public bool foodpoisoned;
-        
-        public string name = "";
 
         private string choice = Console.ReadLine().ToLower();
 
-        string input = Console.ReadLine().ToLower();
+        private string input = Console.ReadLine().ToLower();
 
         private bool Burnt()
         {
@@ -51,7 +49,7 @@ namespace NovemberProjekt
 
         public void PickIngredients()
         {
-            while (ingredientsAvailable.Count >= 1 && input != "no")
+            while (input != "no")
             {
                 Console.WriteLine("In your soup: " + String.Join(", ", insoup));
                 Console.WriteLine("Would you like to add more?");
@@ -65,7 +63,15 @@ namespace NovemberProjekt
                     Console.WriteLine("Not a valid choice, try again");
                     Console.WriteLine("Only accepting " + String.Join(", ",WantMore) + " as answers.");
 
-                    input = Console.ReadLine();
+                    input = Console.ReadLine().ToLower();
+                }
+
+                while(insoup.Count == 0 && input == "no")
+                {
+                    Console.WriteLine("You have to pick atleast one ingredient.");
+                    Console.WriteLine("Only accepting " + String.Join(", ",WantMore) + " as answers.");
+
+                    input = Console.ReadLine().ToLower();
                 }
 
                 if(input == "yes")
@@ -80,11 +86,10 @@ namespace NovemberProjekt
                     CheckIngredient();
                 }
 
-                else
+                else if(input == "no" && insoup.Count >= 1)
                 {
                     Soup();
                 }
-
             }
         }
 
