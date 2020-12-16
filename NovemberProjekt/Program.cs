@@ -12,6 +12,8 @@ namespace NovemberProjekt
             Food flod = new Food();
             Console.WriteLine("Hello chef!");
             flod.PickIngredients();
+            Judge judge = new Judge();
+            judge.JudgeStats();
             Console.ReadLine();
         }
     }
