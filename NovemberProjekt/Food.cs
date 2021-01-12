@@ -184,14 +184,14 @@ namespace NovemberProjekt
             else return true;//Om ingen av de ovanstående ifsatserna har körts så returneras true. Då båda är true
         }
 
-        private void Soup()
+        private void Soup()//Skapar ett privat (inte tillgänglig för ändringar utanför måsvingarna) kodblock.
         {
-            Console.WriteLine("You cook your soup.");
-            Burnt();
-            PrintStats();
+            Console.WriteLine("You cook your soup.");//Skriver ut att soppan är kokt
+            Burnt();//Kör "Brunt"-koden.
+            PrintStats();//Kör "PrintStats"-koden.
         }
 
-        public void PrintStats()
+        public void PrintStats()//Skapar ett "publik" (öppen för ändringar utanför måsvingarna) kodblock.
         {
             if(poisoned.Count >= insoup.Count && Burnt() == true)
             {
