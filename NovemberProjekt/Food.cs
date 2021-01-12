@@ -56,39 +56,41 @@ namespace NovemberProjekt
 
                 string[] WantMore = {"yes", "no"};//skapar en yes, no kontrolltext.
 
-                input = Console.ReadLine().ToLower();//Sparar det man skriver.
+                input = Console.ReadLine().ToLower();//Sparar det man skriver i små bokstäver.
 
-                while (!WantMore.Contains(input))
+                while (!WantMore.Contains(input))//kollar om och körs medans "input" är ett svar som finns med i "WantMore".
                 {
-                    Console.WriteLine("Not a valid choice, try again");
-                    Console.WriteLine("Only accepting " + String.Join(", ",WantMore) + " as answers.");
+                    Console.WriteLine("Not a valid choice, try again");//Skriver ut detta.
+                    Console.WriteLine("Only accepting " + String.Join(", ",WantMore) + " as answers.");//Skriver ut att bara "yes or no" accepteras.
 
-                    input = Console.ReadLine().ToLower();
+                    input = Console.ReadLine().ToLower();//Sparar det man skriver i små bokstäver.
                 }
 
-                while(insoup.Count == 0 && input == "no")
+                while(insoup.Count == 0 && input == "no")//kollar om och körs medans det inte finns något i soppan och "input" är "no".
                 {
-                    Console.WriteLine("You have to pick atleast one ingredient.");
-                    Console.WriteLine("Only accepting " + String.Join(", ",WantMore) + " as answers.");
+                    Console.WriteLine("You have to pick atleast one ingredient.");//skriver ut att man måste ha åtminstonne en ingrediens.
+                    Console.WriteLine("Only accepting " + String.Join(", ",WantMore) + " as answers.");//Skriver ut att bara "yes or no" accepteras.
 
-                    input = Console.ReadLine().ToLower();
+                    input = Console.ReadLine().ToLower();//Sparar det man skriver i små bokstäver.
                 }
 
-                if(input == "yes")
+                if(input == "yes")//Om "input" är "yes" då körs denna.
                 {
+                    Console.Clear();//Rensar "chatten/konsollen"
                     Console.WriteLine("You have " + String.Join(", ", ingredientsAvailable) + " avalible." +
-                    "What do you want to use for your soup?");
+                    "What do you want to use for your soup?");//Skriver ut det som man kan ha i sin soppa.
 
-                    choice = CheckAnswer();
+                    choice = CheckAnswer();//kör "CheckAnswer"-koden.
 
-                    insoup.Add(choice);
+                    insoup.Add(choice);//Lägger till ingrediensen till insoup-listan
 
-                    CheckIngredient();
+                    CheckIngredient();//Kör "CheckIngredient"-koden.
                 }
 
-                else if(input == "no" && insoup.Count >= 1)
+                else if(input == "no" && insoup.Count >= 1)//
                 {
                     Soup();
+                    Console.Clear();
                 }
             }
         }
