@@ -8,17 +8,17 @@ namespace NovemberProjekt
     {
         private List<string> ingredientsAvailable = new List<string>()
         {"tomato", "potato", "carrot", "garlic", "avocado", "lemon", "mango",
-        "olives", "turkey", "fish", "beef", "chicken", "egg"};
+        "olives", "turkey", "fish", "beef", "chicken", "egg"};//Skapar en lista med de här orden i.
 
-        private List<string> insoup = new List<string>();
+        private List<string> insoup = new List<string>();//Skapar en lista för grejerna i soppan.
 
-        private List<string> poisoned = new List<string>();
+        private List<string> poisoned = new List<string>();//Skapar en lista för de grejer som sedan är giftiga.
 
-        private static Random generator = new Random();
+        private static Random generator = new Random();//Skapar en slumpgenerator.
 
-        private bool isPoisonous = false;
+        private bool isPoisonous = false;//skapar en bool som sparar om ingrediensen är giftig eller ej.
 
-        private bool ismoldy = false;
+        private bool ismoldy = false;//skapar en bool som sparar om ingrediensen är möglig eller ej.
 
         // public int filling = generator.Next(1,11);
 
@@ -26,37 +26,37 @@ namespace NovemberProjekt
 
         // private int taste = generator.Next(1,6);
 
-        public bool foodpoisoned;
+        public bool foodpoisoned;//skapar en bool som sparar om soppan är giftig eller ej.
 
-        private string choice = Console.ReadLine().ToLower();
+        private string choice = Console.ReadLine().ToLower();//sparar det som skrivs i chatten och förvandlar det till småbokstäver i variabeln "choice".
 
-        private string input = Console.ReadLine().ToLower();
+        private string input = Console.ReadLine().ToLower();//sparar det som skrivs i chatten och förvandlar det till småbokstäver i variabeln "input".
 
-        private bool Burnt()
+        private bool Burnt()//Skapar en privat bool (true/false) som kollar om soppan brändes på spisen eller ej.
         {
-            if(generator.Next(100) >= 75)
+            if(generator.Next(100) >= 75)//Slumpar fram ett tal mellan 0-100 och kollar om det är större eller lika med och/eller större än 75.
             {
-                Console.WriteLine("You didn't take the soup of the stove in time, there for it got burnt.");
-                return true;
+                Console.WriteLine("You didn't take the soup of the stove in time, there for it got burnt.");//Ifall det slumpade talet var större än eller lika med 75 så skrivs detta ut, annars skippas det.
+                return true;//Returnerar true.
             }
 
-            else
+            else//Om det slumpade talet inte var större än eller lika med 75 så körs detta.
             {
-                Console.WriteLine("You took the soup of the stove before it got burnt.");
-                return false;
+                Console.WriteLine("You took the soup of the stove before it got burnt.");//skriver ut detta.
+                return false;//Returnerar true.
             }
         }
 
-        public void PickIngredients()
+        public void PickIngredients()//Skapar en "publik" (öppen för ändringar utanför måsvingarna) grej...
         {
-            while (input != "no")
+            while (input != "no")//När input inte är no så händer detta.
             {
-                Console.WriteLine("In your soup: " + String.Join(", ", insoup));
-                Console.WriteLine("Would you like to add more?");
+                Console.WriteLine("In your soup: " + String.Join(", ", insoup));//Skriver ut det som finns i ens soppa.
+                Console.WriteLine("Would you like to add more?");//frågar om man vill läggga i mer.
 
-                string[] WantMore = {"yes", "no"};
+                string[] WantMore = {"yes", "no"};//skapar en yes, no kontrolltext.
 
-                input = Console.ReadLine().ToLower();
+                input = Console.ReadLine().ToLower();//Sparar det man skriver.
 
                 while (!WantMore.Contains(input))
                 {
