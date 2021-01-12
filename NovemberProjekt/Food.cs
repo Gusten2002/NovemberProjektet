@@ -32,7 +32,7 @@ namespace NovemberProjekt
 
         private string input = Console.ReadLine().ToLower();//sparar det som skrivs i chatten och förvandlar det till småbokstäver i variabeln "input".
 
-        private bool Burnt()//Skapar en privat bool (true/false) som kollar om soppan brändes på spisen eller ej.
+        private bool Burnt()//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) bool (true/false) som kollar om soppan brändes på spisen eller ej.
         {
             if(generator.Next(100) >= 75)//Slumpar fram ett tal mellan 0-100 och kollar om det är större eller lika med och/eller större än 75.
             {
@@ -47,7 +47,7 @@ namespace NovemberProjekt
             }
         }
 
-        public void PickIngredients()//Skapar en "publik" (öppen för ändringar utanför måsvingarna) grej...
+        public void PickIngredients()//Skapar ett "publik" (öppen för ändringar utanför måsvingarna) kodblock.
         {
             while (input != "no")//När input inte är no så händer detta.
             {
@@ -87,101 +87,101 @@ namespace NovemberProjekt
                     CheckIngredient();//Kör "CheckIngredient"-koden.
                 }
 
-                else if(input == "no" && insoup.Count >= 1)//
+                else if(input == "no" && insoup.Count >= 1)//Om "input" är "no" och det finns något i soppan så körs detta.
                 {
-                    Soup();
-                    Console.Clear();
+                    Soup();//Kör "Soup"-koden.
+                    Console.Clear();//Rensar "chatten/konsollen"
                 }
             }
         }
 
-        private void CheckIngredient()
+        private void CheckIngredient()//Skapar ett privat (inte tillgänglig för ändringar utanför måsvingarna) kodblock.
         {
-            FoodPoisonous();
+            FoodPoisonous();//Kör "FoodPoisonous"-koden.
 
-            if (FoodPoisonous() == true)
+            if (FoodPoisonous() == true)//Om "FoodPoisonous returnerar true så körs detta.
             {
-                Console.WriteLine("This food item is poisinous, but you realiced it after using it...");
+                Console.WriteLine("This food item is poisinous, but you realiced it after using it...");//Skriver ut att ingrediensen var giftig.
 
-                poisoned.Add(choice);
+                poisoned.Add(choice);//Lägger till den giftiga ingrediensen i giftiga-ingredienser listan "poisoned".
             }
 
-            else
+            else//Om "FoodPoisonous inte returnerar true så körs detta.
             {
-                Console.WriteLine("This food item is not poisinous.");
+                Console.WriteLine("This food item is not poisinous.");//Skriver ut att ingrediensen inte är giftig.
             }
         }
 
-        private bool Moldy()
+        private bool Moldy()//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) bool (true/false) som kollar om ingrediensen är möglig eller ej.
         {
-            if(generator.Next(10) >= 5)
+            if(generator.Next(10) >= 5)//Om det slumpade talet är större eller lika med 5 så körs detta.
             {
-                ismoldy = true;
-                return true;
+                ismoldy = true;//Ändrar ismoldy till true.
+                return true;//Returnerar true.
             }
 
-            else
+            else//Om det slumpade talet inte är större eller lika med 5 så körs detta.
             {
-                ismoldy = false;
-                return false;
+                ismoldy = false;//Ändrar ismoldy till false.
+                return false;//Returnerar false.
             }
         }
 
-        private bool Poisonous()
+        private bool Poisonous()//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) bool (true/false) som kollar om ingrediensen är giftig eller ej.
         {
-            if(generator.Next(10) >= 5)
+            if(generator.Next(10) >= 5)//Om det slumpade talet är större eller lika med 5 så körs detta.
             {
-                isPoisonous = true;
-                return true;
+                isPoisonous = true;//Ändrar ispoisonous till true.
+                return true;//Returnerar true.
             }
 
-            else
+            else//Om det slumpade talet inte är större eller lika med 5 så körs detta.
             {
-                isPoisonous = false;
-                return false;
+                isPoisonous = false;//Ändrar ispoisonous till false.
+                return false;//Returnerar false.
             }
         }
 
-        public bool FoodPoisonous()
+        public bool FoodPoisonous()//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) bool (true/false) som kollar om ingrediensen är giftig eller ej.
         {
-            Moldy();
-            Poisonous();
+            Moldy();//kör "Moldy"-koden.
+            Poisonous();//kör "Poisonous"-koden.
             
-            int poisonChance = generator.Next(100);
+            int poisonChance = generator.Next(100);//Skapar en slumpgenerator med namn "poisonChance".
 
-            if(isPoisonous == false && ismoldy == false)
+            if(isPoisonous == false && ismoldy == false)//Om isPoisonous och ismoldy båda är false så körs detta.
             {
-                return false;
+                return false;//Returnerar false
             }
 
-            else if(ismoldy == true && isPoisonous == false)
+            else if(ismoldy == true && isPoisonous == false)//Om isPoisonous är false och ismoldy är true så körs detta.
             {
-                if(poisonChance >= 90)
+                if(poisonChance >= 90)//Om det slumpade talet är större eller lika med 90 så körs denna.
                 {
-                    return true;
+                    return true;//Returnerar true
                 }
 
-                else
+                else//Om det slumpade talet inte är större eller lika med 90 så körs denna.
                 {
-                    return false;
-                }
-            }
-
-            else if(ismoldy == false && isPoisonous == true)
-            {
-                if(poisonChance >= 70)
-                {
-
-                    return true;
-                }
-
-                else
-                {
-                    return false;
+                    return false;//Returnerar false
                 }
             }
 
-            else return true;
+            else if(ismoldy == false && isPoisonous == true)//Om isPoisonous är true och ismoldy är false så körs detta.
+            {
+                if(poisonChance >= 70)//Om det slumpade talet är större eller lika med 70 så körs denna.
+                {
+
+                    return true;//Returnerar true
+                }
+
+                else//Om det slumpade talet inte är större eller lika med 70 så körs denna.
+                {
+                    return false;//Returnerar false
+                }
+            }
+
+            else return true;//Om ingen av de ovanstående ifsatserna har körts så returneras true. Då båda är true
         }
 
         private void Soup()
