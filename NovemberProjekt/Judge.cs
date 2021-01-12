@@ -42,7 +42,7 @@ namespace NovemberProjekt
 
         private void Eat()
         {
-
+            System.Console.WriteLine("The judges eat your soup.");
         }
 
         private void Taste()
@@ -57,7 +57,12 @@ namespace NovemberProjekt
 
         private bool Dead()
         {
-          return false;
+            if(foodPoisoned != true)
+            {
+                return false;
+            }
+            
+          else return true;
         }
     }
 }

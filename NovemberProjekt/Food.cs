@@ -140,7 +140,7 @@ namespace NovemberProjekt
             }
         }
 
-        private bool FoodPoisonous()
+        public bool FoodPoisonous()
         {
             Moldy();
             Poisonous();
