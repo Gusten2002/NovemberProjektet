@@ -90,8 +90,11 @@ namespace NovemberProjekt
 
                 else if(input == "no" && insoup.Count >= 1)//Om "input" är "no" och det finns något i soppan så körs detta.
                 {
+                    Console.Clear();//Rensar "chatten/konsollen"
+                    
                     Soup();//Kör "Soup"-koden.
-                    Thread.Sleep(4000);
+
+                    Thread.Sleep(5000);
                     Console.Clear();//Rensar "chatten/konsollen"
                 }
             }
