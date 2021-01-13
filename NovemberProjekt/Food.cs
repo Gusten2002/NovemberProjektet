@@ -193,61 +193,63 @@ namespace NovemberProjekt
 
         public void PrintStats()//Skapar ett "publik" (öppen för ändringar utanför måsvingarna) kodblock.
         {
-            if(poisoned.Count >= insoup.Count && Burnt() == true)
+            if(poisoned.Count >= insoup.Count && Burnt() == true)//Om antalet giftiga ingredienser i soppan är fler än eller lika med hälften av alla ingredienser, och om soppan är bränd så körs detta.
             {
-                foodpoisoned = true;
+                foodpoisoned = true;//Ändrar "foodpoisoned" till "true".
 
                 Console.WriteLine("Your soup is mostly poisoned, " +
-                "due to the amount of ingredients that was poisoned.");
+                "due to the amount of ingredients that was poisoned.");//Skriver ut att soppan är mestadels giftig.
 
-                Console.WriteLine("You also burn the soup.");
+                Console.WriteLine("You also burn the soup.");//Skriver även ut att soppan brändes.
             }
 
-            else if(poisoned.Count >= insoup.Count && Burnt() == false)
+            else if(poisoned.Count >= insoup.Count && Burnt() == false)//Om antalet giftiga ingredienser i soppan är fler än eller lika med hälften av alla ingredienser, och om soppan inte är bränd så körs detta.
             {
-                foodpoisoned = true;
+                foodpoisoned = true;//Ändrar "foodpoisoned" till "true".
 
                 Console.WriteLine("Your soup is mostly poisoned, " +
-                "due to the amount of ingredients that was poisoned.");
+                "due to the amount of ingredients that was poisoned.");//Skriver ut att soppan är mestadels giftig.
 
-                Console.WriteLine("You did managed not to burn the soup tho.");
+                Console.WriteLine("You did managed not to burn the soup tho.");//Skriver även ut att soppan inte brändes.
             }
 
-            else if(poisoned.Count <= insoup.Count && Burnt() == true)
+            else if(poisoned.Count < insoup.Count && Burnt() == true)//Om antalet giftiga ingredienser i soppan är färre än eller lika med hälften av alla ingredienser, och om soppan är bränd så körs detta.
             {
-                foodpoisoned = true;
+                foodpoisoned = false;//Ändrar "foodpoisoned" till "false".
 
                 Console.WriteLine("Your soup is good, " +
-                "it is not poisoned.");
+                "it is not poisoned.");//Skriver ut att soppan är mestadels icke-giftig.
 
-                Console.WriteLine("You did managed to burn the soup tho.");
+                Console.WriteLine("You did managed to burn the soup.");//Skriver även ut att soppan brändes.
             }
 
-            else
+            else//Om ingen av de tidigare if-satserna körts så körs denna.
             {
-                Console.WriteLine("Your soup is good, " +
-                "it is not poisoned.");
+                foodpoisoned = false;//Ändrar "foodpoisoned" till "false".
 
-                Console.WriteLine("You managed not to burn the soup.");
+                Console.WriteLine("Your soup is good, " +
+                "it is not poisoned.");//Skriver ut att soppan är mestadels icke-giftig.
+
+                Console.WriteLine("You managed not to burn the soup.");//Skriver även ut att soppan inte brändes.
             }
         }
 
-        static string CheckAnswer()
+        static string CheckAnswer()//Skapar en "statisk" (En enda variant av detta kodblock som alla instanser/anrop delar på) string.
         {
             string[] ans = {"tomato", "potato", "carrot", "garlic", "avocado","lemon",
-            "mango", "olives", "turkey", "fish", "beef", "chicken", "egg"};
+            "mango", "olives", "turkey", "fish", "beef", "chicken", "egg"};//Skapar en string array med alla ingredienser.
 
-            string input = Console.ReadLine().ToLower();
+            string input = Console.ReadLine().ToLower();//Sparar det man skriver i små bokstäver.
 
-            while (!ans.Contains(input))
+            while (!ans.Contains(input))//kollar om och körs medans "input" är ett svar som finns med i "ans".
             {
-                Console.WriteLine("Not a valid choice, try again");
-                Console.WriteLine("Only accepting " + String.Join(", ", ans) + " as an answer.");
+                Console.WriteLine("Not a valid choice, try again");//Skriver ut att det som skrevs inte accepteras.
+                Console.WriteLine("Only accepting " + String.Join(", ", ans) + " as an answer.");//Skriver ut att bara de ingredienserna man har accepteras.
 
-                input = Console.ReadLine();
+                input = Console.ReadLine();//sparar det man skriver i "input".
             }
 
-            return input;
+            return input;//Returnerar input.
         }
 
     }
