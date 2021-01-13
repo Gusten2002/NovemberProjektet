@@ -4,15 +4,13 @@ namespace NovemberProjekt
 {
     public class Judge
     {
-        private static Random generator = new Random();//Skapar en slumpgenerator.
+        private static Random generator = new Random();//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) slumpgenerator.
 
         public int amount = 5;//Skapar en siffra (5) i namnet amount.
 
         // private int hunger = generator.Next(10);
 
-        private bool foodPoisoned = false;//Skapar en bool
-
-        private bool isDead = false;
+        private bool isDead = false;//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) bool (true/false) som sparar om någon "judge" är död eller ej.
 
         public void JudgeStats()
         {
@@ -35,34 +33,34 @@ namespace NovemberProjekt
             }
         }
 
-        // public bool JudgeIsFoodPoisoned()
-        // {
-        //        return false;
-        // }
-
-        private void Eat()
+        private void Eat(Food food)
         {
             System.Console.WriteLine("The judges eat your soup.");
+
+            if (food.foodpoisoned == true)
+            {
+                Console.WriteLine("Halp halp im dying");
+            }
         }
 
-        private void Taste()
-        {
+        // private void Taste()
+        // {
 
-        }
+        // }
 
         // public int Score()
         // {
 
         // }
 
-        private bool Dead()
-        {
-            if(foodPoisoned != true)
-            {
-                return false;
-            }
+        // private bool Dead()
+        // {
+        //     if(foodPoisoned != true)
+        //     {
+        //         return false;
+        //     }
 
-          else return true;
-        }
+        //   else return true;
+        // }
     }
 }

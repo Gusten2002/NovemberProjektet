@@ -26,7 +26,7 @@ namespace NovemberProjekt
 
         // private int taste = generator.Next(1,6);
 
-        public bool foodpoisoned;//skapar en publik (öppen för ändringar utanför måsvingarna) bool som sparar om soppan är giftig eller ej.
+        public bool foodpoisoned;//skapar en publik (öppen för ändringar utanför måsvingarna) bool (true/false) som sparar om soppan är giftig eller ej.
 
         private string choice = Console.ReadLine().ToLower();//sparar det som skrivs i chatten och förvandlar det till småbokstäver i variabeln "choice"; privat (inte tillgänglig för ändringar utanför måsvingarna).
 
