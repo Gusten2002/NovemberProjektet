@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace NovemberProjekt
 {
@@ -90,6 +91,7 @@ namespace NovemberProjekt
                 else if(input == "no" && insoup.Count >= 1)//Om "input" är "no" och det finns något i soppan så körs detta.
                 {
                     Soup();//Kör "Soup"-koden.
+                    Thread.Sleep(4000);
                     Console.Clear();//Rensar "chatten/konsollen"
                 }
             }
