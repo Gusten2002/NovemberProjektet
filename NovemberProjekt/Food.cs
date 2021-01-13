@@ -94,7 +94,7 @@ namespace NovemberProjekt
                     
                     Soup();//Kör "Soup"-koden.
 
-                    Thread.Sleep(5000);
+                    Thread.Sleep(5000);//Stannar kodläsaren i 5 sek.
                     Console.Clear();//Rensar "chatten/konsollen"
                 }
             }
