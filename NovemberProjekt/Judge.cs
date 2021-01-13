@@ -4,13 +4,13 @@ namespace NovemberProjekt
 {
     public class Judge
     {
-        private static Random generator = new Random();
+        private static Random generator = new Random();//Skapar en slumpgenerator.
 
-        public int amount = 5;
+        public int amount = 5;//Skapar en siffra (5) i namnet amount.
 
         // private int hunger = generator.Next(10);
 
-        private bool foodPoisoned = false;
+        private bool foodPoisoned = false;//Skapar en bool
 
         private bool isDead = false;
 
@@ -61,7 +61,7 @@ namespace NovemberProjekt
             {
                 return false;
             }
-            
+
           else return true;
         }
     }

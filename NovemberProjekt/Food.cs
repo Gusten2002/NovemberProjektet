@@ -8,17 +8,17 @@ namespace NovemberProjekt
     {
         private List<string> ingredientsAvailable = new List<string>()
         {"tomato", "potato", "carrot", "garlic", "avocado", "lemon", "mango",
-        "olives", "turkey", "fish", "beef", "chicken", "egg"};//Skapar en lista med de här orden i.
+        "olives", "turkey", "fish", "beef", "chicken", "egg"};//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) lista med de här orden i.
 
-        private List<string> insoup = new List<string>();//Skapar en lista för grejerna i soppan.
+        private List<string> insoup = new List<string>();//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) lista för grejerna i soppan.
 
-        private List<string> poisoned = new List<string>();//Skapar en lista för de grejer som sedan är giftiga.
+        private List<string> poisoned = new List<string>();//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) lista för de grejer som sedan är giftiga.
 
-        private static Random generator = new Random();//Skapar en slumpgenerator.
+        private static Random generator = new Random();//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) slumpgenerator.
 
-        private bool isPoisonous = false;//skapar en bool som sparar om ingrediensen är giftig eller ej.
+        private bool isPoisonous = false;//skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) bool som sparar om ingrediensen är giftig eller ej.
 
-        private bool ismoldy = false;//skapar en bool som sparar om ingrediensen är möglig eller ej.
+        private bool ismoldy = false;//skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) bool som sparar om ingrediensen är möglig eller ej.
 
         // public int filling = generator.Next(1,11);
 
@@ -26,11 +26,11 @@ namespace NovemberProjekt
 
         // private int taste = generator.Next(1,6);
 
-        public bool foodpoisoned;//skapar en bool som sparar om soppan är giftig eller ej.
+        public bool foodpoisoned;//skapar en publik (öppen för ändringar utanför måsvingarna) bool som sparar om soppan är giftig eller ej.
 
-        private string choice = Console.ReadLine().ToLower();//sparar det som skrivs i chatten och förvandlar det till småbokstäver i variabeln "choice".
+        private string choice = Console.ReadLine().ToLower();//sparar det som skrivs i chatten och förvandlar det till småbokstäver i variabeln "choice"; privat (inte tillgänglig för ändringar utanför måsvingarna).
 
-        private string input = Console.ReadLine().ToLower();//sparar det som skrivs i chatten och förvandlar det till småbokstäver i variabeln "input".
+        private string input = Console.ReadLine().ToLower();//sparar det som skrivs i chatten och förvandlar det till småbokstäver i variabeln "input"; privat (inte tillgänglig för ändringar utanför måsvingarna).
 
         private bool Burnt()//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) bool (true/false) som kollar om soppan brändes på spisen eller ej.
         {
@@ -47,7 +47,7 @@ namespace NovemberProjekt
             }
         }
 
-        public void PickIngredients()//Skapar ett "publik" (öppen för ändringar utanför måsvingarna) kodblock.
+        public void PickIngredients()//Skapar ett publik (öppen för ändringar utanför måsvingarna) kodblock.
         {
             while (input != "no")//När input inte är no så händer detta.
             {
