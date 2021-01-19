@@ -14,32 +14,39 @@ namespace NovemberProjekt
 
         public void JudgeStats()//Skapar ett publik (öppen för ändringar utanför måsvingarna) kodblock.
         {
-            if(generator.Next(100) >= 50)//Om det slumpade talet är större eller lika med 50 så körs detta.
+            if (generator.Next(100) >= 50)//Om det slumpade talet är större eller lika med 50 så körs detta.
             {
                 amount = 4;//Ändrar på variabeln amount till 4.
-                Console.WriteLine("There are 4 judges");//Skriver ut att det är 4st judges.
+                Console.WriteLine("There are " + amount + " judges");//Skriver ut att det är 4st judges.
             }
 
-            else if (generator.Next(100) <= 25)
+            else if(generator.Next(100) <= 25)//Om det slumpade talet är mindre eller lika med 25 så körs detta.
             {
-                amount = 3;
-                Console.WriteLine("There are 3 judges");
+                amount = 3;//Ändrar på variabeln amount till 3.
+                Console.WriteLine("There are " + amount +" judges");//Skriver ut att det är 3st judges.
             }
 
-            else
+            else//Om inte någon av de övre if-satserna körts så körs denna.
             {
-                amount = 5;
-                Console.WriteLine("There are 5 judges");
+                amount = 5;//Ändrar på variabeln amount till 5.
+                Console.WriteLine("There are " + amount +" judges");//Skriver ut att det är 5st judges.
             }
         }
 
-        void Eat(Food food)
+        void Eat(Food food)//Skapar ett kodblock.
         {
-            System.Console.WriteLine("The judges eat your soup.");
+            Console.WriteLine("The judges eat your soup.");//Skriver ut att judges äter din soppa.
 
-            if (food.foodpoisoned == true)
+            if (food.foodpoisoned == true && generator.Next(100) >= 50)
             {
-                Console.WriteLine("Halp halp im dying");
+                Console.WriteLine("2 of the judges falls to the ground.");
+                amount--;
+                amount--;
+            }
+
+            else if (food.foodpoisoned == true && generator.Next(100) <= 49)
+            {
+            Console.WriteLine("The judges falls to the ground.");
             }
         }
 
