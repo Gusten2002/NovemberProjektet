@@ -94,7 +94,10 @@ namespace NovemberProjekt
                     
                     Soup();//Kör "Soup"-koden.
 
-                    Thread.Sleep(5000);//Stannar kodläsaren i 5 sek.
+                    Console.WriteLine("Press Enter to precede");//skriver att man måste klicka enter för att gå vidare.
+
+                    Console.ReadLine();//väntar tills man klickat enter, då den läser vad som skrivits men sparar det ej.
+
                     Console.Clear();//Rensar "chatten/konsollen"
                 }
             }

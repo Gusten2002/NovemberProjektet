@@ -12,28 +12,28 @@ namespace NovemberProjekt
 
         private bool isDead = false;//Skapar en privat (inte tillgänglig för ändringar utanför måsvingarna) bool (true/false) som sparar om någon "judge" är död eller ej.
 
-        public void JudgeStats()
+        public void JudgeStats()//Skapar ett publik (öppen för ändringar utanför måsvingarna) kodblock.
         {
-            if(generator.Next(100) >= 50)
+            if(generator.Next(100) >= 50)//Om det slumpade talet är större eller lika med 50 så körs detta.
             {
-                amount = 4;
-                Console.WriteLine("Test4");
+                amount = 4;//Ändrar på variabeln amount till 4.
+                Console.WriteLine("There are 4 judges");//Skriver ut att det är 4st judges.
             }
 
             else if (generator.Next(100) <= 25)
             {
                 amount = 3;
-                Console.WriteLine("Test3");
+                Console.WriteLine("There are 3 judges");
             }
 
             else
             {
                 amount = 5;
-                Console.WriteLine("Test5");
+                Console.WriteLine("There are 5 judges");
             }
         }
 
-        private void Eat(Food food)
+        void Eat(Food food)
         {
             System.Console.WriteLine("The judges eat your soup.");
 
@@ -64,3 +64,4 @@ namespace NovemberProjekt
         // }
     }
 }
+
