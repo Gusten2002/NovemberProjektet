@@ -9,12 +9,12 @@ namespace NovemberProjekt
     {
         static void Main(string[] args)
         {
-            Food flod = new Food();
+            Food soup = new Food();
             Console.WriteLine("Hello chef!");
-            flod.PickIngredients();
+            soup.PickIngredients();
             Judge judge = new Judge();
             judge.JudgeStats();
-            judge.Eat(flod);
+            judge.Eat(soup);
             Console.ReadLine();
         }
     }
