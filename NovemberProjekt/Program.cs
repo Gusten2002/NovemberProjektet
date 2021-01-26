@@ -14,6 +14,7 @@ namespace NovemberProjekt
             flod.PickIngredients();
             Judge judge = new Judge();
             judge.JudgeStats();
+            judge.Eat(flod);
             Console.ReadLine();
         }
     }

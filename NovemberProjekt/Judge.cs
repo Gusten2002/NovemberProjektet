@@ -33,7 +33,7 @@ namespace NovemberProjekt
             }
         }
 
-        void Eat(Food food)//Skapar ett kodblock.
+        public void Eat(Food food)//Skapar ett kodblock.
         {
             Console.WriteLine("The judges eat your soup.");//Skriver ut att judges äter din soppa.
 
@@ -46,7 +46,7 @@ namespace NovemberProjekt
 
             else if (food.foodpoisoned == true && generator.Next(100) <= 49)
             {
-            Console.WriteLine("The judges falls to the ground.");
+                Console.WriteLine("The judges falls to the ground.");
             }
         }
 
